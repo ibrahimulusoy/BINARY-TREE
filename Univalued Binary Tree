@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    List<int> list=new List<int>();
+    
+    public bool IsUnivalTree(TreeNode root) 
+    {
+        
+        addList(root,list);
+        int x= root.val;
+        foreach(var i in list)
+        {
+            if (i!=x) return false;
+        }
+        return true;       
+        
+    }  
+    public void addList(TreeNode root,List<int> list)
+    {
+        list.Add(root.val);
+        if (root.left != null) addList(root.left,list);
+        if (root.right != null) addList(root.right,list);        
+    }
+}
